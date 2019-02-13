@@ -1,9 +1,9 @@
-from kps_pelaaja_vs_pelaaja import KPSPelaajaVsPelaaja
-from kps_tekoaly import KPSTekoaly
-from kps_parempi_tekoaly import KPSParempiTekoaly
-
+from pelimuoto import Pelimuoto
 
 def main():
+    get_pelimuoto = {'a': Pelimuoto.luo_kaksinpeli(), 
+                     'b': Pelimuoto.luo_helppo_tekoalypeli(), 
+                     'c': Pelimuoto.luo_vaikea_tekooalypeli()}
     while True:
         print("Valitse pelataanko"
               "\n (a) Ihmistä vastaan"
@@ -13,31 +13,13 @@ def main():
               )
 
         vastaus = input()
-
-        if vastaus.endswith("a"):
-            print(
-                "Peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s"
-            )
-
-            kaksinpeli = KPSPelaajaVsPelaaja()
-            kaksinpeli.pelaa()
-        elif vastaus.endswith("b"):
-            print(
-                "Peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s"
-            )
-
-            yksinpeli = KPSTekoaly()
-            yksinpeli.pelaa()
-        elif vastaus.endswith("c"):
-            print(
-                "Peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s"
-            )
-
-            haastava_yksinpeli = KPSParempiTekoaly()
-            haastava_yksinpeli.pelaa()
+        if vastaus in get_pelimuoto:
+            pelimuoto = get_pelimuoto[vastaus]
         else:
             break
-
+        print("Peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s")
+        pelimuoto.pelaa()
 
 if __name__ == "__main__":
+    print("lol")
     main()
