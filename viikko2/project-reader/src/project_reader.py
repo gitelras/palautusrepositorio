@@ -11,7 +11,7 @@ class ProjectReader:
         # tiedoston merkkijonomuotoinen sisältö
         content = request.urlopen(self._url).read().decode("utf-8")
         data = toml.loads(content)['tool']['poetry']
-        print('DATA: ',data)
+        #print('DATA: ',data)
 
         name = data['name']
         des = data['description']
