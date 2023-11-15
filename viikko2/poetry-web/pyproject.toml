@@ -8,6 +8,8 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 flask = "^3.0.0"
+cowsay = "^6.1"
+tomlkit = "^0.12.2"
 
 
 [tool.poetry.group.dev.dependencies]
