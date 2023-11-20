@@ -39,6 +39,14 @@ class UserService:
     def validate(self, username, password, password_confirmation):
         if not username or not password:
             raise UserInputError("Username and password are required")
+        if not password_confirmation:
+            raise UserInputError("Password confirmation are required")
+        if password_confirmation != password:
+            raise UserInputError("Wrong password confirmation")
+        if len(username) < 3:
+            raise UserInputError("Invalid username or password")
+
+
 
         # toteuta loput tarkastukset tänne ja nosta virhe virhetilanteissa
 
