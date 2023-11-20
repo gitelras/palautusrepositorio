@@ -17,15 +17,32 @@ Register With Valid Username And Password
 Register With Too Short Username And Valid Password
     Set Username  ka
     Set Password  kalle123
+    Set Password Confirmation  kalle123
     Submit Credentials
-    Register Should Fail With Message  Invalid username or password
+    Register Should Fail With Message  Invalid username
 
 Register With Valid Username And Invalid Password
 # salasana ei sisällä halutunlaisia merkkejä
+    Set Username  kalle
+    Set Password  kalle
+    Set Password Confirmation  kalle
+    Submit Credentials
+    Register Should Fail With Message  Password may not only contain lower case chraracters
+# ...
+Register With Nonmatching Password And Password Confirmation
+    Set Username  kalle
+    Set Password  kalle123
+    Set password_confirmation  kalle12
+    Submit Credentials
+    Register Should Fail With Message  Wrong password confirmation
+# ...
+Login After Successful Registration
 # ...
 
-Register With Nonmatching Password And Password Confirmation
+Login After Failed Registration
 # ...
+
+
 
 *** Keywords ***
 Set Username

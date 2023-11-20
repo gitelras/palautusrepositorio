@@ -1,3 +1,4 @@
+import re
 from entities.user import User
 from repositories.user_repository import (
     user_repository as default_user_repository
@@ -44,7 +45,9 @@ class UserService:
         if password_confirmation != password:
             raise UserInputError("Wrong password confirmation")
         if len(username) < 3:
-            raise UserInputError("Invalid username or password")
+            raise UserInputError("Invalid username")
+        if re.match("^[a-z]+$", password):
+            raise UserInputError('Password may not only contain lower case chraracters')
 
 
 
